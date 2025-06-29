@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: certificate-cms-backend
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r backend/requirements.txt
+      python backend/manage.py collectstatic --noinput
+      python backend/manage.py migrate
+    startCommand: gunicorn certificate_mgt_backend.wsgi:application
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        value: 'django-insecure-ajo=ac=%4yqp^jx+bz!up&*n&27$9=%dz-m#lfgx#mk%4%15!k'
+      - key: DEBUG
+        value: False
+      - key: DB_NAME
+        value: certdb_fedd
+      - key: DB_USER
+        value: certdb_fedd_user
+      - key: DB_PASSWORD
+        value: zHWtak8GuIRmKlLuLhMnLRTro8oYwNI0
+      - key: DB_HOST
+        value: dpg-d1gn8ibipnbc73av8a3g-a.virginia-postgres.render.com
+      - key: DB_PORT
+        value: 5432
