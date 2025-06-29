@@ -27,7 +27,12 @@ SECRET_KEY = 'django-insecure-ajo=ac=%4yqp^jx+bz!up&*n&27$9=%dz-m#lfgx#mk%4%15!k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "certificate-cms-backend.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
 
 # Application definition
 INSTALLED_APPS = [
