@@ -22,3 +22,5 @@ sqlparse==0.5.3
 txt2tags==3.9
 tzdata==2025.2
 whitenoise==6.9.0
+reportlab==4.4.0
+
