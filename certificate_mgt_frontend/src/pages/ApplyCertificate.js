@@ -188,7 +188,7 @@ const clearButtonHoverStyle = {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/applications/', data, {
+      await axios.post('https://certificate-cms-backend.onrender.com/api/applications/', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/application-confirmation');

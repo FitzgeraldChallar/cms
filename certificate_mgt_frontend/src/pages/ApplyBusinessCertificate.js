@@ -82,7 +82,7 @@ const ApplyBusinessCertificate = () => {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/business-certificate-applications/', data, {
+      await axios.post('https://certificate-cms-backend.onrender.com/api/business-certificate-applications/', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate("/business-certificate-success");
