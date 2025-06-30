@@ -137,7 +137,7 @@ const ApplyLicense = () => {
     }
   
     try {
-      await axios.post("http://localhost:8000/api/license-applications/", completeData); 
+      await axios.post("https://certificate-cms-backend.onrender.com/api/license-applications/", completeData); 
       setSuccess(true);
       navigate("/application-success");
     } catch (err) {

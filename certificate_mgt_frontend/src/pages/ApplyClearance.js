@@ -108,7 +108,7 @@ const ApplyClearance = () => {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/clearance-applications/', submission, {
+      await axios.post('https://certificate-cms-backend.onrender.com/api/clearance-applications/', submission, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

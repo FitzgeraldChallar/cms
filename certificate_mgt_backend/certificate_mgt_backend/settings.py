@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
 ]
-
+ 
 
 # Application definition
 INSTALLED_APPS = [
@@ -62,7 +62,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000"
+    "https://certificate-cms-frontend.onrender.com",
 ]
 
 ROOT_URLCONF = 'certificate_mgt_backend.urls'
