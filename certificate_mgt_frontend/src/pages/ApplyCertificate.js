@@ -11,7 +11,6 @@ const ApplyCertificate = () => {
     address: '',
     tin_number: '',
     last_certificate_expiry_date: '',
-    year_of_establishment: '',
     principal_name: '',
     contact_number: '',
     email_address: '',
@@ -238,10 +237,6 @@ const clearButtonHoverStyle = {
           <label>
             Last Certificate Expiry Date*
           <input type="date" name="last_certificate_expiry_date" value={formData.last_certificate_expiry_date} onChange={handleChange} style={inputStyle} required />
-          </label>
-          <label>
-            Year of Establishment*
-          <input type="date" name="year_of_establishment" value={formData.year_of_establishment} onChange={handleChange} style={inputStyle} required />
           </label>
         </fieldset>
 
