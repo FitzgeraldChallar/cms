@@ -10,7 +10,6 @@ const ApplyClearance = () => {
     sub_office_addresses: '',
     year_established_in_liberia: '',
     executive_director_name: '',
-    application_date: '',
     telephone_number: '',
     email: '',
     project1_name: '',
@@ -308,7 +307,6 @@ const requiredNoteStyle = {
           {renderInput("Sub-office Address", "sub_office_addresses")}
           {renderInput("Year Established in Liberia*", "year_established_in_liberia", "date", true)}
           {renderInput("Name of Executive Director*", "executive_director_name", true)}
-          {renderInput("Application Date*", "application_date", "date", true)}
           {renderInput("Telephone Number*", "telephone_number", true)}
           {renderInput("Email*", "email", "email", true)}
         </fieldset>

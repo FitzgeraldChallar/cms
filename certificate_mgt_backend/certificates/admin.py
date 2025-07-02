@@ -264,7 +264,6 @@ class CertificateApplicationAdmin(admin.ModelAdmin):
 class ClearanceApplicationAdmin(admin.ModelAdmin):
     list_display = ('id', 'partner', 'executive_director_name','compliance_director_approved', 'ed_approved', 'ceo_approved', 'email', 'clearance_link')
     search_fields = ('partner', 'executive_director_name', 'email')
-    list_filter = ('application_date', 'year_established_in_liberia')
     readonly_fields = ['submitted_at']
 
     def clearance_link(self, obj):
