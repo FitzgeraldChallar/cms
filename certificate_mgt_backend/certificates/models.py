@@ -337,7 +337,6 @@ class ClearanceApplication(models.Model):
     partner = models.CharField(max_length=255)
     head_office_address = models.TextField()
     sub_office_addresses = models.TextField(null=True, blank=True)
-    year_established_in_liberia = models.DateField()
     executive_director_name = models.CharField(max_length=255)
     telephone_number = models.CharField(max_length=50)
     email = models.EmailField()

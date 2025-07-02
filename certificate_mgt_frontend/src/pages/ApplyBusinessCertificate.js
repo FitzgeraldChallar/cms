@@ -7,10 +7,8 @@ const ApplyBusinessCertificate = () => {
     partner: '',
     address: '',
     tin_number: '',
-    certificate_type: '',
     contact_number: '',
     email: '',
-    year_of_establishment: '',
     type_of_business: '',
     other_business_type: '',
     name_of_business_owner: '',
@@ -229,7 +227,6 @@ const requiredNoteStyle = {
           <input name="tin_number" placeholder="TIN Number*" value={formData.tin_number} onChange={handleChange} style={inputStyle} required />
           <input name="contact_number" placeholder="Contact Number*" value={formData.contact_number} onChange={handleChange} style={inputStyle} required />
           <input type="email" name="email" placeholder="Email*" value={formData.email} onChange={handleChange} style={inputStyle} required />
-          <input type="number" name="year_of_establishment" placeholder="Year of Establishment*" value={formData.year_of_establishment} onChange={handleChange} style={inputStyle} required />
           <select name="type_of_business" value={formData.type_of_business} onChange={handleChange} style={inputStyle} required>
             <option value="">Select Business Type*</option>
             {businessTypes.map((type) => (
