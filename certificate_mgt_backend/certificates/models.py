@@ -55,8 +55,6 @@ class CertificateApplication(models.Model):
     compliance_approved = models.BooleanField(default=False)
     ed_approved = models.BooleanField(default=False)
     ceo_approved = models.BooleanField(default=False)
-
-    year_of_establishment = models.DateField()
     principal_name = models.CharField(max_length=255)
     contact_number = models.CharField(max_length=20)
     email_address = models.EmailField()
