@@ -389,16 +389,16 @@ class ClearanceApplication(models.Model):
     previous_year_activities_report = models.FileField(upload_to='clearance/supporting_docs/')
 
     # Equipment / Tools
-    light_vehicles = models.PositiveIntegerField()
-    pickups_4wd = models.PositiveIntegerField()
-    rig_compressor = models.PositiveIntegerField()
-    tripod = models.PositiveIntegerField()
-    culvert_mould = models.PositiveIntegerField()
-    size_0_90m = models.PositiveIntegerField()
-    size_0_76m = models.PositiveIntegerField()
-    chain_block = models.PositiveIntegerField()
-    pulley = models.PositiveIntegerField()
-    casting_yard = models.PositiveIntegerField()
+    light_vehicles = models.PositiveIntegerField(null=True, blank=True)
+    pickups_4wd = models.PositiveIntegerField(null=True, blank=True)
+    rig_compressor = models.PositiveIntegerField(null=True, blank=True)
+    tripod = models.PositiveIntegerField(null=True, blank=True)
+    culvert_mould = models.PositiveIntegerField(null=True, blank=True)
+    size_0_90m = models.PositiveIntegerField(null=True, blank=True)
+    size_0_76m = models.PositiveIntegerField(null=True, blank=True)
+    chain_block = models.PositiveIntegerField(null=True, blank=True)
+    pulley = models.PositiveIntegerField(null=True, blank=True)
+    casting_yard = models.PositiveIntegerField(null=True, blank=True)
     additional_equipment = models.TextField(null=True, blank=True)
 
     # Final Confirmation
