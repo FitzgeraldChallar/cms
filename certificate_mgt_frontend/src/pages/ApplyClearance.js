@@ -226,10 +226,12 @@ const requiredNoteStyle = {
     marginBottom: '15px',
   });
 
-  const renderInput = (label, name, type = "text", isRequired = false) => (
+  const renderInput = (label, name, type = "text", inputProps = {}, isRequired = false) => (
     <div style={formGroupStyle}>
       <label htmlFor={name} style={labelStyle}>{label}</label>
-      <input type={type} id={name} name={name} style={inputStyle} onChange={handleChange} required={isRequired} />
+      <input type={type} id={name} name={name} style={inputStyle} onChange={handleChange} 
+      inputMode={type === "number" ? "numeric" : undefined} min={inputProps.min} max={inputProps.max}
+      step={inputProps.step || (type === "number" ? "1" : undefined)} required={isRequired} />
     </div>
   );
 
@@ -366,8 +368,8 @@ const requiredNoteStyle = {
           {renderInput("Number of Rig/Compressor*", "rig_compressor", "number", true)}
           {renderInput("Number of Tripod*", "tripod", "number", true)}
           {renderInput("Number of Culvert Mould*", "culvert_mould", "number", true)}
-          {renderInput("Number of 0.90m*", "size_0_90m", "number", true)}
-          {renderInput("Number of 0.76m*", "size_0_76m", "number", true)}
+          {renderInput("Number of 0.76m*", "size_0_76m", "number", true, { min: 0 })}
+          {renderInput("Number of 0.90m*", "size_0_90m", "number", true, { min: 0 })}
           {renderInput("Number of Chain Block*", "chain_block", "number", true)}
           {renderInput("Number of Pulley*", "pulley", "number", true)}
           {renderInput("Casting Yard for Culverts*", "casting_yard", "number", true)}
