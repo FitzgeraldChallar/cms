@@ -443,7 +443,6 @@ class BusinessCertificateApplication(models.Model):
     address = models.TextField()
     contact_number = models.CharField(max_length=50)  
     email = models.EmailField()
-    year_of_establishment = models.PositiveIntegerField()
     type_of_business = models.CharField(max_length=100, choices=BUSINESS_TYPE_CHOICES)
     other_business_type = models.CharField(max_length=255, blank=True, null=True)
 
