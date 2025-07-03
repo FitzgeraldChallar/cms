@@ -31,7 +31,7 @@ const Dashboard = () => {
   const fetchCertificates = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8000/api/certificates/');
+      const response = await axios.get('https://certificate-cms-backend.onrender.com/api/certificates/');
       setCertificates(response.data);
       setLastUpdated(new Date().toLocaleTimeString());
     } catch (error) {
