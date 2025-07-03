@@ -76,6 +76,7 @@ const ApplyLicense = () => {
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -116,6 +117,7 @@ const ApplyLicense = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
   
     const completeData = new FormData();
   
@@ -143,6 +145,8 @@ const ApplyLicense = () => {
     } catch (err) {
       console.error(err.response || err);
       setError("Submission failed. Please check your inputs.");
+    } finally {
+      setLoading(false);
     }
   };
   
@@ -216,6 +220,22 @@ const requiredNoteStyle = {
         WASH Compliance License Application
       </h2>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
+      {loading && (
+       <div style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+        fontSize: '22px',
+        color: '#2980b9',
+        fontWeight: 'bold'
+       }}>
+        Submitting your application...
+       </div>
+      )}
 
       {/* Instruction Notice */}
 <div style={noticeContainerStyle}>
@@ -651,8 +671,9 @@ const requiredNoteStyle = {
             cursor: "pointer",
             fontWeight: "bold",
           }}
+          disabled={loading}
         >
-          Submit Application
+          {loading ? "Submitting..." : "Submit Application"}
         </button>
       </form>
     </div>
