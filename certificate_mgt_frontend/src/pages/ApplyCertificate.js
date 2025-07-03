@@ -156,6 +156,7 @@ const clearButtonHoverStyle = {
   const fileInputRefs = useRef({});
   const [hoveredClear, setHoveredClear] = useState(null);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
 
   const handleChange = (e) => {
@@ -182,6 +183,7 @@ const clearButtonHoverStyle = {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const data = new FormData();
     Object.entries(formData).forEach(([key, val]) => {
       if (val !== null && val !== '') data.append(key, val);
@@ -194,6 +196,8 @@ const clearButtonHoverStyle = {
       navigate('/application-confirmation');
     } catch (error) {
       alert('Submission failed. Please check the form and try again.');
+    }  finally {
+       setLoading(false);
     }
   };
 
@@ -203,6 +207,22 @@ const clearButtonHoverStyle = {
         WASH-in-School Certificate Application
       </h2>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
+      {loading && (
+        <div style={{
+          position: 'fixed',
+          top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 9999,
+          fontSize: '22px',
+          color: '#2980b9',
+          fontWeight: 'bold'
+        }}>
+          Submitting your application...
+        </div>
+      )}
 
       {/* Instruction Notice */}
 <div style={noticeContainerStyle}>
@@ -608,7 +628,10 @@ const clearButtonHoverStyle = {
           </label>
         </div>
 
-        <button type="submit" style={submitButtonStyle}>Submit Application</button>
+        <button type="submit" style={submitButtonStyle} disabled={loading}>
+          {loading ? "Submitting..." : "Submit Application"}
+        </button>
+
       </form>
     </div>
   );
