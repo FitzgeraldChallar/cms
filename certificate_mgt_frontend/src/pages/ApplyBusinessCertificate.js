@@ -41,6 +41,8 @@ const ApplyBusinessCertificate = () => {
     b_certificate_payment_receipt: null, 
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -70,25 +72,29 @@ const ApplyBusinessCertificate = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      data.append(key, value);
-    });
-    Object.entries(files).forEach(([key, file]) => {
-      if (file) data.append(key, file);
-    });
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      await axios.post('https://certificate-cms-backend.onrender.com/api/business-certificate-applications/', data, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-      navigate("/business-certificate-success");
-    } catch (error) {
-      console.error('Submission failed:', error);
-      alert('Submission failed. Please check the form and try again.');
-    }
-  };
+  const data = new FormData();
+  Object.entries(formData).forEach(([key, value]) => {
+    data.append(key, value);
+  });
+  Object.entries(files).forEach(([key, file]) => {
+    if (file) data.append(key, file);
+  });
+
+  try {
+    await axios.post('https://certificate-cms-backend.onrender.com/api/business-certificate-applications/', data, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    navigate("/business-certificate-success");
+  } catch (error) {
+    console.error('Submission failed:', error);
+    alert('Submission failed. Please check the form and try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const businessTypes = [
     'Water Processing Company', 'Eatery/Restaurant', 'Food Processing Plants', 'Chemical Store',
@@ -194,6 +200,22 @@ const requiredNoteStyle = {
       <h1 style={formTitleStyle}>WASH Business Certificate Application</h1>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
 
+      {loading && (
+        <div style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 9999,
+            fontSize: '22px',
+            color: '#2980b9',
+            fontWeight: 'bold'
+        }}>
+            Submitting your application...
+        </div>
+)}
       {/* Instruction Notice */}
 <div style={noticeContainerStyle}>
   <p style={noticeTitleStyle}>Important Notice</p>
@@ -388,7 +410,10 @@ const requiredNoteStyle = {
           </label>
         </div>
 
-        <button type="submit" style={submitButtonStyle}>Submit Application</button>
+        <button type="submit" style={submitButtonStyle} disabled={loading}>
+          {loading ? "Submitting..." : "Submit Application"}
+        </button>
+
       </form>
     </div>
   );
