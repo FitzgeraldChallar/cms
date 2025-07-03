@@ -402,8 +402,8 @@ const requiredNoteStyle = {
           </label>
         </div>
 
-        <button type="submit" style={submitButtonStyle} disabled={loading}>
-           {loading ? "Submitting..." : "Submit Application"}
+        <button type="submit" style={buttonStyle} disabled={loading}>
+         {loading ? "Submitting..." : "Submit Application"}
         </button>
 
       </form>
