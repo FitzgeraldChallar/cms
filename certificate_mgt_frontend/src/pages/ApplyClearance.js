@@ -64,6 +64,7 @@ const ApplyClearance = () => {
 
   const [successMessage, setSuccessMessage] = useState('');     
   const [errorMessage, setErrorMessage] = useState('');   
+  const [loading, setLoading] = useState(false);
 
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
@@ -95,6 +96,7 @@ const ApplyClearance = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
     const submission = new FormData();
 
     Object.entries(formData).forEach(([key, value]) => {
@@ -118,6 +120,8 @@ const ApplyClearance = () => {
       console.error(error.response?.data || error);
       setErrorMessage('Submission failed. Please check the form and try again.');
       setSuccessMessage('');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -270,6 +274,23 @@ const requiredNoteStyle = {
     <div style={containerStyle}>
       <h2 style={headingStyle}>WASH Clearance Application</h2>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
+      {loading && (
+       <div style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 9999,
+        fontSize: '22px',
+        color: '#2980b9',
+        fontWeight: 'bold'
+       }}>
+        Submitting your application...
+       </div>
+      )}
+
 
       {/* Instruction Notice */}
 <div style={noticeContainerStyle}>
