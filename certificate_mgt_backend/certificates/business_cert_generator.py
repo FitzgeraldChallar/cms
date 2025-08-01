@@ -107,7 +107,7 @@ def generate_business_cert(obj):
     c.drawCentredString(width/2, height-1.6*inch, "REPUBLIC OF LIBERIA")
     
     # Add header text
-    c.setFont("Helvetica-Bold", 16)
+    c.setFont("Helvetica-Bold", 16)   
     c.setFillColorRGB(0.12, 0.56, 1.0)  # dodger blue text
     c.drawCentredString(width/2, height-2.2*inch, "NATIONAL WATER, SANITATION & HYGIENE COMMISSION")
     
