@@ -153,8 +153,9 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'nwashccompliance@gmail.com'
 
 # Media files (for uploaded documents)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = "/mnt/data/media"
+MEDIA_URL = "/media/"
+
 
 
 
