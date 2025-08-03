@@ -195,7 +195,7 @@ class CertificateApplicationAdmin(admin.ModelAdmin):
     def get_fields(self, request, obj=None): 
         base_fields = [
             'partner', 'address','tin_number', 'last_certificate_expiry_date', 'application_date',
-            'year_of_establishment', 'principal_name', 'contact_number', 'email_address',
+             'principal_name', 'contact_number', 'email_address',
             'faith_based_school', 'non_faith_based_school',
             'type_of_business_registration', 'ownership', 'financial_strength', 'name_of_banks',
 
