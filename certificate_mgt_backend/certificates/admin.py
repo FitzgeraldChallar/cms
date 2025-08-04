@@ -288,8 +288,8 @@ class ClearanceApplicationAdmin(admin.ModelAdmin):
         ('General Information', {
             'fields': (
                 'partner', 'head_office_address', 'sub_office_addresses',
-                'year_established_in_liberia', 'executive_director_name',
-                'application_date', 'telephone_number', 'email',
+                'executive_director_name',
+                'telephone_number', 'email',
             )
         }),
         ('WATSAN Construction Experiences', {
