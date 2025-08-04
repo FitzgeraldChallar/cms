@@ -379,7 +379,7 @@ class BusinessCertificateApplicationAdmin(admin.ModelAdmin):
     readonly_fields = ('submitted_at',)
     search_fields = ('partner', 'type_of_business', 'name_of_business_owner')
     list_filter = ('type_of_business',)
-    fields = ['partner', 'address', 'contact_number','email','year_of_establishment','type_of_business','other_business_type','name_of_business_owner','address_of_business_owner','contact_no_of_business_owner','email_of_business_owner','name_of_staff_1','nationality_of_staff_1','position_of_staff_1',
+    fields = ['partner', 'address', 'contact_number','email','type_of_business','other_business_type','name_of_business_owner','address_of_business_owner','contact_no_of_business_owner','email_of_business_owner','name_of_staff_1','nationality_of_staff_1','position_of_staff_1',
               'education_experience_of_staff_1','cv_of_staff_1','name_of_staff_2','nationality_of_staff_2',
                'position_of_staff_2','education_experience_of_staff_2','cv_of_staff_2', 'name_of_staff_3','nationality_of_staff_3',
                'position_of_staff_3','education_experience_of_staff_3','cv_of_staff_3',
