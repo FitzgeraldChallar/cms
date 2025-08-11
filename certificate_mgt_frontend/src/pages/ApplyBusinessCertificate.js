@@ -197,7 +197,33 @@ const requiredNoteStyle = {
 
   return (
     <div style={containerStyle}>
-      <h1 style={formTitleStyle}>WASH Business Certificate Application</h1>
+      {/* Logo Row */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <img
+          src="wash_liberia_200px.png"
+          alt="Left Logo"
+          style={{ height: '80px' }}
+        />
+
+        {/* Titles in the middle */}
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
+            WASH-in-School Certificate Application
+          </h2>
+          
+        </div>
+
+        <img
+          src="nwashc_logo.png"
+          alt="Right Logo"
+          style={{ height: '80px' }}
+        />
+      </div>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
 
       {loading && (
