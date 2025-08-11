@@ -221,7 +221,7 @@ const clearButtonHoverStyle = {
           <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
             WASH-in-School Certificate Application
           </h2>
-          <h3 style={{ margin: 0 }}>Pre-Qualification Form</h3>
+          
         </div>
 
         <img
