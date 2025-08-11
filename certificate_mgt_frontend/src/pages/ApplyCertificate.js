@@ -215,6 +215,15 @@ const clearButtonHoverStyle = {
           alt="Left Logo"
           style={{ height: '80px' }}
         />
+
+        {/* Titles in the middle */}
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
+            WASH-in-School Certificate Application
+          </h2>
+          <h3 style={{ margin: 0 }}>Pre-Qualification Form</h3>
+        </div>
+
         <img
           src="nwashc_logo.png"
           alt="Right Logo"
@@ -222,10 +231,6 @@ const clearButtonHoverStyle = {
         />
       </div>
 
-      <h2 style={{ textAlign: 'center', fontSize: '24px', color: '#2c3e50', marginBottom: '30px' }}>
-        WASH-in-School Certificate Application
-      </h2>
-      <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
       {loading && (
         <div style={{
           position: 'fixed',
