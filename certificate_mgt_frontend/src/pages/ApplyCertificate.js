@@ -211,7 +211,7 @@ const clearButtonHoverStyle = {
         marginBottom: '20px'
       }}>
         <img
-          src="/path/to/left-logo.png"
+          src="wash_liberia_200px.png"
           alt="Left Logo"
           style={{ height: '80px' }}
         />
