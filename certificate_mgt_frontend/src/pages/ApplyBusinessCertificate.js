@@ -213,7 +213,7 @@ const requiredNoteStyle = {
         {/* Titles in the middle */}
         <div style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
-            WASH-in-School Certificate Application
+            WASH Business Certificate Application
           </h2>
           
         </div>
