@@ -203,6 +203,25 @@ const clearButtonHoverStyle = {
 
   return (
     <div style={containerStyle}>
+      {/* Logo Row */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <img
+          src="/path/to/left-logo.png"
+          alt="Left Logo"
+          style={{ height: '80px' }}
+        />
+        <img
+          src="nwashc_logo.png"
+          alt="Right Logo"
+          style={{ height: '80px' }}
+        />
+      </div>
+
       <h2 style={{ textAlign: 'center', fontSize: '24px', color: '#2c3e50', marginBottom: '30px' }}>
         WASH-in-School Certificate Application
       </h2>
