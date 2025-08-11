@@ -216,9 +216,33 @@ const requiredNoteStyle = {
 
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
-      <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>
-        WASH Compliance License Application
-      </h2>
+      {/* Logo Row */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <img
+          src="wash_liberia_200px.png"
+          alt="Left Logo"
+          style={{ height: '80px' }}
+        />
+
+        {/* Titles in the middle */}
+        <div style={{ textAlign: 'center' }}>
+          <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
+            WASH Compliance License Application
+          </h2>
+          
+        </div>
+
+        <img
+          src="nwashc_logo.png"
+          alt="Right Logo"
+          style={{ height: '80px' }}
+        />
+      </div>
       <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
       {loading && (
        <div style={{
@@ -606,7 +630,7 @@ const requiredNoteStyle = {
     { name: "letter_of_application", label: "Letter of Application*" },
     { name: "lwsc_receipts", label: "LWSC Receipts" },
     { name: "license_payment_receipt", label: "License Payment Receipt*" },
-  ].map(({ name, label }) => (
+  ].map(({ name, label }) => ( 
     <div key={name} style={{ marginBottom: '15px' }}>
       <label style={labelStyle}>{label}</label>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
