@@ -14,7 +14,7 @@ from .business_cert_generator import generate_business_cert
 
 admin.site.site_url = 'https://certificate-cms-frontend.onrender.com/'
 admin.site.site_header = "NWASHC CMS Administration"
-admin.site.site_title = "NWASHC CMS Admin Portal"
+admin.site.site_title = "NWASHC CMS Admin Interfaces"
 admin.site.index_title = "Welcome to NWASHC Certificate Management System"
 
 
