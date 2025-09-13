@@ -29,6 +29,10 @@ class Certificate(models.Model):
     expiry_date = models.DateField()
     status = models.CharField(max_length=20, choices=[('Valid', 'Valid'), ('Expired', 'Expired')], default='Valid')
 
+    class Meta:
+        verbose_name = "WCC, WC, WL - Certificates"
+        verbose_name_plural = "WCC, WC, WL - Certficates"
+
 
     def __str__(self):
         return f'{self.partner} - {self.certificate_type}'
@@ -245,6 +249,10 @@ class CertificateApplication(models.Model):
     def get_contact_email(self):
         partner = Partner.objects.filter(organization_name=self.partner).first()
         return partner.email if partner else 'nwashccompliance@gmail.com'
+    
+    class Meta:
+        verbose_name = "WASH-in-School Applications"
+        verbose_name_plural = "WASH-in-School Applications"
     
 
 class LicenseApplication(models.Model):

@@ -144,7 +144,7 @@ def generate_business_cert(obj):
             c.setFont("Helvetica", 8)
             c.drawCentredString(2*inch, height-1.5*inch, "LIBERIA SEAL")
     except Exception as e:
-        print(f"Error adding images: {e}")
+        print(f"Error adding images: {e}")      
         # Fallback
         c.setFillColorRGB(0.1, 0.2, 0.5)  # Navy blue
         c.circle(2*inch, height-1.5*inch, 0.75*inch, fill=0)
@@ -183,7 +183,7 @@ def generate_business_cert(obj):
 
     c.setFont("Helvetica", 10)
     c.setFillColorRGB(0.8, 0.1, 0.1)  # red text
-    c.drawCentredString(tin_center_x, tin_text_y + 10, "TIN:")
+    c.drawCentredString(tin_center_x, tin_text_y + 10, "TIN:")  
 
     c.setFont("Helvetica-Bold", 12)
     c.drawCentredString(tin_center_x, tin_text_y - 2, tin_number)
@@ -249,7 +249,7 @@ def generate_business_cert(obj):
 
     # Set font for measurement
     font_name = "Helvetica"
-    bold_font = "Helvetica-Bold"
+    bold_font = "Helvetica-Bold" 
     font_size = 12
     c.setFont(font_name, font_size)
 
@@ -357,7 +357,7 @@ def generate_business_cert(obj):
        print(f"Error rendering watermark: {e}")
 
 
-    # Add decorative background pattern
+    # Add decorative background pattern    
     c.saveState()
     c.setStrokeColorRGB(0.8, 0.85, 0.95, 0.3)  # light blue
     c.setLineWidth(0.7)
