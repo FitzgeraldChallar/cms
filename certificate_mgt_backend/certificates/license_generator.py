@@ -317,20 +317,18 @@ def generate_license(obj):
     c.setFillColorRGB(0, 0, 0)
     c.drawCentredString(width/2, height/2-1.95*inch, "This license is subject to revocation failure to maintain compliance")
     
-    # --- Signature lines (pushed up from bottom, comfortable spacing) ---
-    c.setStrokeColorRGB(0, 0, 0)  # black
-    # Set signature line around 2 inches from bottom
-    sig_line_y = 2.2*inch
-    c.line(2.5*inch, sig_line_y, 4.5*inch, sig_line_y)
-    c.line(width - 4.5*inch, sig_line_y, width - 2.5*inch, sig_line_y)
-
-     # --- Signature titles (shifted slightly above the lines) ---
+    # Signature lines
+    c.setStrokeColorRGB(0, 0, 0)#black
+    c.line(2.5*inch, 2*inch, 4.5*inch, 2*inch)
+    c.line(width-4.5*inch, 2*inch, width-2.5*inch, 2*inch)
+    
+    # Signature titles
     c.setFont("Helvetica-Bold", 14)
-    c.drawCentredString(3.5*inch, sig_line_y - 0.2*inch, "Morris G. Gono, Jr.")
-    c.drawCentredString(3.5*inch, sig_line_y - 0.4*inch, "Executive Director")
-
-    c.drawCentredString(width - 3.5*inch, sig_line_y - 0.2*inch, "George W. K. Yarngo")
-    c.drawCentredString(width - 3.5*inch, sig_line_y - 0.4*inch, "Chief Executive Officer")
+    c.drawCentredString(3.5*inch, 1.8*inch, "Morris G. Gono, Jr.")
+    c.drawCentredString(3.5*inch, 1.6*inch, "Executive Director")
+    
+    c.drawCentredString(width-3.5*inch, 1.8*inch, "George W. K. Yarngo")
+    c.drawCentredString(width-3.5*inch, 1.6*inch, "Chief Executive Officer")
 
     # Watermark: Tiled logos within content area only
     try:
