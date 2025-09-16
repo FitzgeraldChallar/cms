@@ -226,9 +226,9 @@ def generate_license(obj):
     # Reset back for next body text, moved further down
     c.setFont("Helvetica", 14)
     c.setFillColor("black")
-    c.drawCentredString(width / 2, height / 2 - 0.45 * inch,
+    c.drawCentredString(width / 2, height / 2 - 0.55 * inch,
      "and is hereby granted the right to operate in the Republic of Liberia as")
-    c.drawCentredString(width / 2, height / 2 - 0.65 * inch,
+    c.drawCentredString(width / 2, height / 2 - 0.80 * inch,
      "Commercial Water Producer and Supplier via this")
 
     # Set text and styling
