@@ -266,6 +266,9 @@ class LicenseApplication(models.Model):
     year_of_establishment = models.DateField()
     application_date = models.DateField(default=timezone.now)
     business_registration_type = models.CharField(max_length=100)
+    amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=20, blank=True, null=True)
+
 
     owner_name = models.CharField(max_length=255)
     owner_address = models.TextField()
@@ -339,6 +342,23 @@ class LicenseApplication(models.Model):
     
     def __str__(self):
         return f"License Application - {self.partner}"
+    
+    def save(self, *args, **kwargs):
+        # assign category before saving
+        self.category = self.assign_category()
+        super().save(*args, **kwargs)
+
+    def assign_category(self):
+        if self.amount_paid >= 650:
+            return "Category A"
+        elif 450 <= self.amount_paid <= 649:
+            return "Category B"
+        elif 350 <= self.amount_paid <= 449:
+            return "Category C"
+        elif 150 <= self.amount_paid <= 349:
+            return "Category D"
+        return "Uncategorized"
+
 
 class ClearanceApplication(models.Model):
     # General Information
@@ -348,6 +368,9 @@ class ClearanceApplication(models.Model):
     executive_director_name = models.CharField(max_length=255)
     telephone_number = models.CharField(max_length=50)
     email = models.EmailField()
+    amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=20, blank=True, null=True)
+
 
     # WATSAN Construction Experiences
     project1_name = models.CharField(max_length=255, blank=True, null=True,)
@@ -501,6 +524,23 @@ class BusinessCertificateApplication(models.Model):
 
     def __str__(self):
         return f"Business Certificate - {self.partner}"
+    
+    def save(self, *args, **kwargs):
+        # assign category before saving
+        self.category = self.assign_category()
+        super().save(*args, **kwargs)
+
+    def assign_category(self):
+        if self.amount_paid >= 650:
+            return "Category A"
+        elif 450 <= self.amount_paid <= 649:
+            return "Category B"
+        elif 350 <= self.amount_paid <= 449:
+            return "Category C"
+        elif 150 <= self.amount_paid <= 349:
+            return "Category D"
+        return "Uncategorized"
+
 
 
 

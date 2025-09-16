@@ -12,6 +12,8 @@ const ApplyClearance = () => {
     executive_director_name: '',
     telephone_number: '',
     email: '',
+    amount_paid: '',
+    category: '',
     project1_name: '',
     project1_funding_sources: '',
     project1_implementation_period: '',
@@ -356,6 +358,19 @@ const requiredNoteStyle = {
           {renderInput("Name of Executive Director*", "executive_director_name", true)}
           {renderInput("Telephone Number*", "telephone_number", true)}
           {renderInput("Email*", "email", "email", true)}
+          <select
+  name="amount_paid"
+  value={formData.amount_paid}
+  onChange={handleChange}
+  required
+>
+  <option value="">-- Select Amount --</option>
+  <option value="650">Category A ($650+)</option>
+  <option value="450">Category B ($450 - $649)</option>
+  <option value="350">Category C ($350 - $449)</option>
+  <option value="150">Category D ($150 - $349)</option>
+</select>
+
         </fieldset>
 
         <fieldset style={fieldsetStyle}>
