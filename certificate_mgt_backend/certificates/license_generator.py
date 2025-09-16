@@ -218,16 +218,17 @@ def generate_license(obj):
     c.drawCentredString(width / 2, height / 2,
      "and has met all the requirements as prescribed by the National WASH Commission as")
     
-    c.setFont("Helvetica-Bold", 16)
+    # Highlighted Category (bold + red)
+    c.setFont("Courier-Bold", 13)
     c.setFillColor("red")
     c.drawCentredString(width / 2, height / 2 - 0.25 * inch, f"{category} Producer")
 
+    # Reset back for next body text, moved further down
     c.setFont("Helvetica", 14)
     c.setFillColor("black")
-
-    c.drawCentredString(width / 2, height / 2 - 0.3 * inch,
+    c.drawCentredString(width / 2, height / 2 - 0.65 * inch,
      "and is hereby granted the right to operate in the Republic of Liberia as")
-    c.drawCentredString(width / 2, height / 2 - 0.6 * inch,
+    c.drawCentredString(width / 2, height / 2 - 0.95 * inch,
      "Commercial Water Producer and Supplier via this")
 
     # Set text and styling
