@@ -358,7 +358,8 @@ const requiredNoteStyle = {
           {renderInput("Name of Executive Director*", "executive_director_name", true)}
           {renderInput("Telephone Number*", "telephone_number", true)}
           {renderInput("Email*", "email", "email", true)}
-          <select
+          <label style={labelStyle}>Select The Category You Fall In</label> 
+          <select style={inputStyle}
   name="amount_paid"
   value={formData.amount_paid}
   onChange={handleChange}

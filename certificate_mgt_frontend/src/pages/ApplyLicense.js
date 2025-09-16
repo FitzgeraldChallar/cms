@@ -395,14 +395,16 @@ const requiredNoteStyle = {
 
           <label style={labelStyle}>Bank(s)*</label>
           <input style={inputStyle} name="bank" required onChange={handleChange} />
-          <select
+
+          <label style={labelStyle}>Select The Category You Fall In</label>
+          <select style={inputStyle}
   name="amount_paid"
   value={formData.amount_paid}
   onChange={handleChange}
   required
 >
   <option value="">-- Select Amount --</option>
-  <option value="650">Category A ($650+)</option>
+  <option value="650">Category A ($650 and above)</option>
   <option value="450">Category B ($450 - $649)</option>
   <option value="350">Category C ($350 - $449)</option>
   <option value="150">Category D ($150 - $349)</option>
