@@ -244,7 +244,7 @@ def generate_license(obj):
 
     # Position just below the last compliance text line
     center_x = width / 2
-    center_y = height / 2 - 0.95 * inch  # was -0.1 inch — shifted down to avoid overlap
+    center_y = height / 2 - 1.15 * inch  # was -0.1 inch — shifted down to avoid overlap
 
     rect_width = text_width + 2 * padding_x
     rect_height = font_size + 2 * padding_y
@@ -288,7 +288,7 @@ def generate_license(obj):
 
     # Starting X to center entire line
     x_start = (width - total_width) / 2
-    y_pos = height / 2 - 1.35 * inch  # adjusted from -0.9 to -1.3 to avoid overlap
+    y_pos = height / 2 - 1.55 * inch  # adjusted from -0.9 to -1.3 to avoid overlap
 
     # Draw texts
     x = x_start
@@ -315,7 +315,7 @@ def generate_license(obj):
     #add compliance notice text
     c.setFont("Helvetica-Oblique", 11)
     c.setFillColorRGB(0, 0, 0)
-    c.drawCentredString(width/2, height/2-1.7*inch, "This license is subject to revocation failure to maintain compliance")
+    c.drawCentredString(width/2, height/2-1.95*inch, "This license is subject to revocation failure to maintain compliance")
     
     # Signature lines
     c.setStrokeColorRGB(0, 0, 0)#black
