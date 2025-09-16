@@ -358,7 +358,7 @@ const requiredNoteStyle = {
           {renderInput("Name of Executive Director*", "executive_director_name", true)}
           {renderInput("Telephone Number*", "telephone_number", true)}
           {renderInput("Email*", "email", "email", true)}
-          <label style={labelStyle}>Select The Category You Fall In</label> 
+          <label style={labelStyle}>Select The Category You Fall In* </label><br></br>
           <select style={inputStyle}
   name="amount_paid"
   value={formData.amount_paid}
@@ -366,7 +366,7 @@ const requiredNoteStyle = {
   required
 >
   <option value="">-- Select Amount --</option>
-  <option value="650">Category A ($650+)</option>
+  <option value="650">Category A ($650 and above)</option>
   <option value="450">Category B ($450 - $649)</option>
   <option value="350">Category C ($350 - $449)</option>
   <option value="150">Category D ($150 - $349)</option>

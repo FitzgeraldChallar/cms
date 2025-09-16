@@ -396,7 +396,7 @@ const requiredNoteStyle = {
           <label style={labelStyle}>Bank(s)*</label>
           <input style={inputStyle} name="bank" required onChange={handleChange} />
 
-          <label style={labelStyle}>Select The Category You Fall In</label>
+          <label style={labelStyle}>Select The Category You Fall In*</label>
           <select style={inputStyle}
   name="amount_paid"
   value={formData.amount_paid}
