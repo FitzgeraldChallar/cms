@@ -445,6 +445,22 @@ class ClearanceApplication(models.Model):
     def __str__(self):
         return f"Clearance Application - {self.partner}"
     
+    def save(self, *args, **kwargs):
+        # assign category before saving
+        self.category = self.assign_category()
+        super().save(*args, **kwargs)
+
+    def assign_category(self):
+        if self.amount_paid >= 650:
+            return "Category A"
+        elif 450 <= self.amount_paid <= 649:
+            return "Category B"
+        elif 350 <= self.amount_paid <= 449:
+            return "Category C"
+        elif 150 <= self.amount_paid <= 349:
+            return "Category D"
+        return "Uncategorized"
+    
 class BusinessCertificateApplication(models.Model):
     # GENERAL INFORMATION SECTION
     BUSINESS_TYPE_CHOICES = [
@@ -525,21 +541,7 @@ class BusinessCertificateApplication(models.Model):
     def __str__(self):
         return f"Business Certificate - {self.partner}"
     
-    def save(self, *args, **kwargs):
-        # assign category before saving
-        self.category = self.assign_category()
-        super().save(*args, **kwargs)
-
-    def assign_category(self):
-        if self.amount_paid >= 650:
-            return "Category A"
-        elif 450 <= self.amount_paid <= 649:
-            return "Category B"
-        elif 350 <= self.amount_paid <= 449:
-            return "Category C"
-        elif 150 <= self.amount_paid <= 349:
-            return "Category D"
-        return "Uncategorized"
+    
 
 
 

@@ -43,6 +43,9 @@ def generate_clearance(obj):
     tin_number = obj.tin_number or "N/A"
     date_issued = datetime.today().date()
     date_expiry = date_issued + timedelta(days=365)
+
+    category = obj.category or "Uncategorized"
+
     
     # Create buffer for the PDF
     buffer = BytesIO()
@@ -215,7 +218,7 @@ def generate_clearance(obj):
     c.drawCentredString(width / 2, height / 2,
      "and Development Planning and granted appropriate clearances to implement projects in their")
     c.drawCentredString(width / 2, height / 2 - 0.3 * inch,
-     "sectors has met the Requirements of the National WASH Commission as Category entity")
+     f"sectors has met the Requirements of the National WASH Commission as {category} Entity")
     c.drawCentredString(width / 2, height / 2 - 0.6 * inch,
      "and can now operate in Liberia's WATER SUPPLY, SANITATION AND HYGIENE Sector via this")
 
