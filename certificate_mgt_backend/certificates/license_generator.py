@@ -311,12 +311,6 @@ def generate_license(obj):
     c.setStrokeColorRGB(0, 0, 0)
     c.line(x, y_pos - 1, x + issued_width, y_pos - 1)
 
-
-    #add compliance notice text
-    c.setFont("Helvetica-Oblique", 11)
-    c.setFillColorRGB(0, 0, 0)
-    c.drawCentredString(width/2, height/2-1.95*inch, "This license is subject to revocation failure to maintain compliance")
-    
     # Signature lines
     c.setStrokeColorRGB(0, 0, 0)#black
     c.line(2.5*inch, 2*inch, 4.5*inch, 2*inch)
@@ -329,6 +323,12 @@ def generate_license(obj):
     
     c.drawCentredString(width-3.5*inch, 1.8*inch, "George W. K. Yarngo")
     c.drawCentredString(width-3.5*inch, 1.6*inch, "Chief Executive Officer")
+
+    #add compliance notice text
+    c.setFont("Helvetica-Oblique", 11)
+    c.setFillColorRGB(0, 0, 0)
+    c.drawCentredString(width/2, height/2-1.95*inch, "This license is subject to revocation failure to maintain compliance")
+    
 
     # Watermark: Tiled logos within content area only
     try:

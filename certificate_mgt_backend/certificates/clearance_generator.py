@@ -214,16 +214,25 @@ def generate_clearance(obj):
     c.setFillColorRGB(0, 0, 0)  # black text
 
     c.drawCentredString(width / 2, height / 2 + 0.3 * inch,
-     "A Non-Government Organization which is duly accredited by the Ministry of Finance")
+     "A profit making entity which is duly accredited by the Ministry of Finance and")
     c.drawCentredString(width / 2, height / 2,
-     "and Development Planning and granted appropriate clearances to implement projects in their")
-    c.drawCentredString(width / 2, height / 2 - 0.3 * inch,
-     f"sectors has met the Requirements of the National WASH Commission as {category} Entity")
-    c.drawCentredString(width / 2, height / 2 - 0.6 * inch,
-     "and can now operate in Liberia's WATER SUPPLY, SANITATION AND HYGIENE Sector via this")
+     "Development Planning and granted appropriate clearances is now considered")
+    
+    # Highlighted Category (bold + red)
+    c.setFont("Courier-Bold", 13)
+    c.setFillColor("red")
+    c.drawCentredString(width / 2, height / 2 - 0.25 * inch, f"{category} Entity")
+
+    # Reset back for next body text, moved further down
+    c.setFont("Helvetica", 14)
+    c.setFillColor("black")
+    c.drawCentredString(width / 2, height / 2 - 0.55 * inch,
+     "having met the requirements of the National WASH Commission and can now")
+    c.drawCentredString(width / 2, height / 2 - 0.80 * inch,
+     "operate in Liberia's Water Supply, Sanitation & Hygiene Sector via this")
 
     # Set text and styling
-    text = "WASH COMPLIANCE CLEARANCE"
+    text = "WASH CLEARANCE"
     font = "Courier-Bold"
     font_size = 14
     c.setFont(font, font_size)
@@ -235,7 +244,7 @@ def generate_clearance(obj):
 
     # Position just below the last compliance text line
     center_x = width / 2
-    center_y = height / 2 - 0.95 * inch  # was -0.1 inch — shifted down to avoid overlap
+    center_y = height / 2 - 1.15 * inch  # was -0.1 inch — shifted down to avoid overlap
 
     rect_width = text_width + 2 * padding_x
     rect_height = font_size + 2 * padding_y
@@ -279,7 +288,7 @@ def generate_clearance(obj):
 
     # Starting X to center entire line
     x_start = (width - total_width) / 2
-    y_pos = height / 2 - 1.35 * inch  # adjusted from -0.9 to -1.3 to avoid overlap
+    y_pos = height / 2 - 1.55 * inch  # adjusted from -0.9 to -1.3 to avoid overlap
 
     # Draw texts
     x = x_start
@@ -301,12 +310,6 @@ def generate_clearance(obj):
     c.drawString(x, y_pos, issued_text)
     c.setStrokeColorRGB(0, 0, 0)
     c.line(x, y_pos - 1, x + issued_width, y_pos - 1)
-
-
-    #add compliance notice text
-    c.setFont("Helvetica-Oblique", 11)
-    c.setFillColorRGB(0, 0, 0)
-    c.drawCentredString(width/2, height/2-1.7*inch, "This clearance is subject to revocation failure to maintain compliance")
     
     # Signature lines
     c.setStrokeColorRGB(0, 0, 0)#black
@@ -321,6 +324,10 @@ def generate_clearance(obj):
     c.drawCentredString(width-3.5*inch, 1.8*inch, "George W. K. Yarngo")
     c.drawCentredString(width-3.5*inch, 1.6*inch, "Chief Executive Officer")
 
+    #add compliance notice text
+    c.setFont("Helvetica-Oblique", 11)
+    c.setFillColorRGB(0, 0, 0)
+    c.drawCentredString(width/2, height/2-1.95*inch, "This clearance is subject to revocation failure to maintain compliance")
     # Watermark: Tiled logos within content area only
     try:
         if logo_path and os.path.exists(logo_path):
