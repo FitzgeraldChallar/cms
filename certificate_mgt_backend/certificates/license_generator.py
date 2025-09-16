@@ -216,7 +216,15 @@ def generate_license(obj):
     c.drawCentredString(width / 2, height / 2 + 0.3 * inch,
      "A profit making entity which is duly registered by the Liberia Business Registry")
     c.drawCentredString(width / 2, height / 2,
-     f"and has met all the requirements as prescribed by the National WASH Commission as {category} Producer")
+     "and has met all the requirements as prescribed by the National WASH Commission as")
+    
+    c.setFont("Helvetica-Bold", 16)
+    c.setFillColor("red")
+    c.drawCentredString(width / 2, height / 2 - 0.25 * inch, f"{category} Producer")
+
+    c.setFont("Helvetica", 14)
+    c.setFillColor("black")
+
     c.drawCentredString(width / 2, height / 2 - 0.3 * inch,
      "and is hereby granted the right to operate in the Republic of Liberia as")
     c.drawCentredString(width / 2, height / 2 - 0.6 * inch,
