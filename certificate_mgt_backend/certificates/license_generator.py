@@ -221,7 +221,7 @@ def generate_license(obj):
     # Highlighted Category (bold + red)
     c.setFont("Courier-Bold", 13)
     c.setFillColor("red")
-    c.drawCentredString(width / 2, height / 2 - 0.25 * inch, f"{category} Producer")
+    c.drawCentredString(width / 2, height / 2 - 0.25 * inch, f"{category} - Producer")
 
     # Reset back for next body text, moved further down
     c.setFont("Helvetica", 14)
