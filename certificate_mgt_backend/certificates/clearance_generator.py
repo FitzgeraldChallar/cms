@@ -214,9 +214,9 @@ def generate_clearance(obj):
     c.setFillColorRGB(0, 0, 0)  # black text
 
     c.drawCentredString(width / 2, height / 2 + 0.3 * inch,
-     "A profit making entity which is duly accredited by the")
+     "A profit making entity which is duly accredited by the Ministry of")
     c.drawCentredString(width / 2, height / 2,
-     "Ministry of Finance and Development Planning and granted appropriate clearances is now considered")
+     "Finance and Development Planning and granted appropriate clearances is now considered")
     
     # Highlighted Category (bold + red)
     c.setFont("Courier-Bold", 13)
@@ -227,9 +227,9 @@ def generate_clearance(obj):
     c.setFont("Helvetica", 14)
     c.setFillColor("black")
     c.drawCentredString(width / 2, height / 2 - 0.55 * inch,
-     "having met the requirements of the National WASH Commission and can now operate in")
+     "having met the requirements of the National WASH Commission and can now operate")
     c.drawCentredString(width / 2, height / 2 - 0.80 * inch,
-     "Liberia's Water Supply, Sanitation & Hygiene Sector via this")
+     "in the Liberia's Water Supply, Sanitation & Hygiene Sector via this")
 
     # Set text and styling
     text = "WASH CLEARANCE"
@@ -311,25 +311,23 @@ def generate_clearance(obj):
     c.setStrokeColorRGB(0, 0, 0)
     c.line(x, y_pos - 1, x + issued_width, y_pos - 1)
     
-    # --- Signature lines (positioned about 2.4 inches from bottom) ---
-    sig_line_y = 2.4 * inch  # nice breathing space from bottom
-    c.setStrokeColorRGB(0, 0, 0)  # black
-    c.line(2.5*inch, sig_line_y, 4.5*inch, sig_line_y)
-    c.line(width - 4.5*inch, sig_line_y, width - 2.5*inch, sig_line_y)
-
-    # --- Signature titles (slightly above the lines) ---
+    # Signature lines
+    c.setStrokeColorRGB(0, 0, 0)#black
+    c.line(2.5*inch, 2*inch, 4.5*inch, 2*inch)
+    c.line(width-4.5*inch, 2*inch, width-2.5*inch, 2*inch)
+    
+    # Signature titles
     c.setFont("Helvetica-Bold", 14)
-    c.drawCentredString(3.5*inch, sig_line_y + 0.2*inch, "Morris G. Gono, Jr.")
-    c.drawCentredString(3.5*inch, sig_line_y + 0.0*inch, "Executive Director")
+    c.drawCentredString(3.5*inch, 1.8*inch, "Morris G. Gono, Jr.")
+    c.drawCentredString(3.5*inch, 1.6*inch, "Executive Director")
+    
+    c.drawCentredString(width-3.5*inch, 1.8*inch, "George W. K. Yarngo")
+    c.drawCentredString(width-3.5*inch, 1.6*inch, "Chief Executive Officer")
 
-    c.drawCentredString(width - 3.5*inch, sig_line_y + 0.2*inch, "George W. K. Yarngo")
-    c.drawCentredString(width - 3.5*inch, sig_line_y + 0.0*inch, "Chief Executive Officer")
-
-    # --- Compliance notice (directly BELOW the signature portion) ---
+    # Compliance notice (placed just below signature block)
     c.setFont("Helvetica-Oblique", 11)
     c.setFillColorRGB(0, 0, 0)
-    compliance_y = sig_line_y - 0.6*inch  # placed comfortably below signatures
-    c.drawCentredString(width/2, compliance_y,
+    c.drawCentredString(width/2, 1.3*inch, 
        "This clearance is subject to revocation failure to maintain compliance")
 
     # Watermark: Tiled logos within content area only
