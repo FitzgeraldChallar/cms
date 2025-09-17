@@ -326,7 +326,7 @@ def generate_clearance(obj):
 
     # Compliance notice (placed just below signature block)
     c.setFont("Helvetica-Oblique", 11)
-    c.setFillColorRGB(0, 0, 0)
+    c.setFillColor("red")
     c.drawCentredString(width/2, 1.3*inch, 
        "This clearance is subject to revocation failure to maintain compliance")
 
