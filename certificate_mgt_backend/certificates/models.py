@@ -337,6 +337,10 @@ class LicenseApplication(models.Model):
     certificate_number = models.CharField(max_length=20, unique=True, blank=True, null=True)
     tin_number = models.CharField(max_length=30, blank=True, null=True)
 
+    class Meta:
+        verbose_name = "License Applications"
+        verbose_name_plural = "License Applications"
+
     def is_fully_approved(self):
         return self.is_approved_by_compliance and self.is_approved_by_ed and self.is_approved_by_ceo
     
@@ -441,6 +445,10 @@ class ClearanceApplication(models.Model):
     generated_clearance = models.FileField(upload_to='certificates/', null=True, blank=True)
     certificate_number = models.CharField(max_length=20, unique=True, blank=True, null=True)
     tin_number = models.CharField(max_length=30, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Clearance Applications"
+        verbose_name_plural = "Clearance Applications"
     
     def __str__(self):
         return f"Clearance Application - {self.partner}"
@@ -537,6 +545,10 @@ class BusinessCertificateApplication(models.Model):
     ed_approved = models.BooleanField(default=False)
     ceo_approved = models.BooleanField(default=False)
     generated_business_certificate = models.FileField(upload_to='certificates/', null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Business Certificate Applications"
+        verbose_name_plural = "Business Certificate Applications"
 
     def __str__(self):
         return f"Business Certificate - {self.partner}"
