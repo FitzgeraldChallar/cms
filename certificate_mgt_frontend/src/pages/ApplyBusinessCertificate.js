@@ -124,7 +124,7 @@ const ApplyBusinessCertificate = () => {
 const noticeTitleStyle = {
   fontSize: '18px',
   fontWeight: '600',
-  color: '#b85c00',
+  color: '#e77605ff',
   marginBottom: '10px',
 };
 
@@ -196,6 +196,8 @@ const requiredNoteStyle = {
   };
 
   return (
+   <div style={{ backgroundColor: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
+
     <div style={containerStyle}>
       {/* Logo Row */}
       <div style={{
@@ -442,6 +444,7 @@ const requiredNoteStyle = {
 
       </form>
     </div>
+   </div>
   );
 };
 
