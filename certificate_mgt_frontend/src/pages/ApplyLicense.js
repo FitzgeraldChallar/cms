@@ -160,8 +160,18 @@ const ApplyLicense = () => {
     borderRadius: "8px",
   };
 
+  const containerStyle = {
+    maxWidth: '900px',
+    margin: '40px auto',
+    padding: '30px',
+    background: '#fff',
+    borderRadius: '12px',
+    boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+    fontFamily: 'Segoe UI, Tahoma, sans-serif',
+  };
+
   const noticeContainerStyle = {
-  backgroundColor: '#fef7eb',
+  backgroundColor: '#a8ddedff',
   border: '1px solid #f0c36d',
   borderRadius: '10px',
   padding: '20px',
@@ -217,7 +227,9 @@ const requiredNoteStyle = {
   };
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
+   <div style={{ backgroundColor: "#a8ddedff", minHeight: "100vh", padding: "20px" }}>
+
+     <div style={containerStyle}>
       {/* Logo Row */}
       <div style={{
         display: 'flex',
@@ -718,6 +730,7 @@ const requiredNoteStyle = {
         </button>
       </form>
     </div>
+   </div>
   );
 };
 

@@ -76,7 +76,7 @@ const ApplyCertificate = () => {
   };
 
   const noticeContainerStyle = {
-  backgroundColor: '#fef7eb',
+  backgroundColor: '#a8ddedff',
   border: '1px solid #f0c36d',
   borderRadius: '10px',
   padding: '20px',
@@ -202,6 +202,8 @@ const clearButtonHoverStyle = {
   };
 
   return (
+   <div style={{ backgroundColor: "#a8ddedff", minHeight: "100vh", padding: "20px" }}>
+
     <div style={containerStyle}>
       {/* Logo Row */}
       <div style={{
@@ -658,6 +660,7 @@ const clearButtonHoverStyle = {
 
       </form>
     </div>
+   </div>
   );
 };
 
