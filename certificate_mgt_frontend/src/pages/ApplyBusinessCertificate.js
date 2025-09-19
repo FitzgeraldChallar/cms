@@ -124,7 +124,7 @@ const ApplyBusinessCertificate = () => {
 const noticeTitleStyle = {
   fontSize: '18px',
   fontWeight: '600',
-  color: '#b85c00',
+  color: '#87CEEB',
   marginBottom: '10px',
 };
 

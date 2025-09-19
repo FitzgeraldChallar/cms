@@ -85,7 +85,7 @@ def generate_clearance(obj):
    # Optional: add sloped corner notches (decorative style)
     c.setStrokeColorRGB(0.0, 0.2, 0.4)
     notch_len = 20
-    c.setLineWidth(1)
+    c.setLineWidth(1)  
    # Top-left notch
     c.line(outer_x, outer_y + outer_h, outer_x + notch_len, outer_y + outer_h)
     c.line(outer_x, outer_y + outer_h, outer_x, outer_y + outer_h - notch_len)
