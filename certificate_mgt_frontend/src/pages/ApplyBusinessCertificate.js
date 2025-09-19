@@ -114,7 +114,7 @@ const ApplyBusinessCertificate = () => {
   };
 
   const noticeContainerStyle = {
-  backgroundColor: '#fef7eb',
+  backgroundColor: '#a8ddedff',
   border: '1px solid #f0c36d',
   borderRadius: '10px',
   padding: '20px',
@@ -124,7 +124,7 @@ const ApplyBusinessCertificate = () => {
 const noticeTitleStyle = {
   fontSize: '18px',
   fontWeight: '600',
-  color: '#87CEEB',
+  color: '#b85c00',
   marginBottom: '10px',
 };
 
