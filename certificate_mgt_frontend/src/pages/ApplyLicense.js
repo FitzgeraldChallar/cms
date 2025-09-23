@@ -227,7 +227,7 @@ const requiredNoteStyle = {
   };
 
   return (
-   <div style={{ backgroundColor: "#a8ddedff", minHeight: "100vh", padding: "20px" }}>
+   <div style={{ backgroundColor: "#1105fcff", minHeight: "100vh", padding: "20px" }}>
 
      <div style={containerStyle}>
       {/* Logo Row */}
