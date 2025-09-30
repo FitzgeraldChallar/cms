@@ -717,7 +717,7 @@ const requiredNoteStyle = {
           type="submit"
           style={{
             padding: "12px 20px",
-            backgroundColor: "#007bff",
+            backgroundColor: "#000080",
             color: "#fff",
             border: "none",
             borderRadius: "6px",
