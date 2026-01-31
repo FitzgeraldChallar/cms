@@ -12,6 +12,7 @@ import ApplyClearance from './pages/ApplyClearance';
 import ApplyClearanceSuccess from './components/ApplyClearanceSuccess';
 import ApplyBusinessCertificate from './pages/ApplyBusinessCertificate';
 import BusinessCertificateSuccess from './components/BusinessCertificateSuccess';
+import CertificatePayment from './pages/PaymentPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/apply-clearance-success" element={<ApplyClearanceSuccess />} />
         <Route path="/apply-business-certificate" element={<ApplyBusinessCertificate />} />
         <Route path="/business-certificate-success" element={<BusinessCertificateSuccess />} />
+        <Route path="/certificate-payment" element={<CertificatePayment />} />
       </Routes>
     </Router>
   );

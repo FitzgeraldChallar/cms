@@ -31,7 +31,7 @@ const Dashboard = () => {
   const fetchCertificates = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('https://certificate-cms-backend.onrender.com/api/certificates/');
+      const response = await axios.get('http://localhost:8000/api/certificates/');
       setCertificates(response.data);
       setLastUpdated(new Date().toLocaleTimeString());
     } catch (error) {
@@ -104,12 +104,13 @@ const Dashboard = () => {
           </div>
         )}
 
-        <section style={styles.cards}>
-          <Card title="Total Certificates" value={totalCertificates} color="#D6EAF8" />
-          <Card title="Valid Certificates" value={validCertificates} color="#D5F5E3" />
-          <Card title="Expired Certificates" value={expiredCertificates} color="#FADBD8" />
-        </section>
+        <section style={styles.cards}> 
+          <Card title="Total Certificates" value={totalCertificates} color="#3498DB" />
+          <Card title="Valid Certificates" value={validCertificates} color="#2ECC71" />
+          <Card title="Expired Certificates" value={expiredCertificates} color="#E74C3C" />
 
+        </section>
+ 
         <section style={styles.controls}>
           <input
             type="text"
@@ -203,7 +204,7 @@ const styles = {
   justifyContent: 'center',
   fontFamily: "'Inter', 'Segoe UI', sans-serif",
   minHeight: '100vh',
-  backgroundColor: '#F4F6F8',
+  backgroundColor: '#2980b9',
   padding: '30px 0'
 },
   footer: {

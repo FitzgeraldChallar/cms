@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const ApplyBusinessCertificate = () => {
+
+const ApplyBusinessCertificate = () => { 
   const [formData, setFormData] = useState({
-    partner: '',
+    partner: '', 
     address: '',
     tin_number: '',
     contact_number: '',
@@ -33,15 +34,17 @@ const ApplyBusinessCertificate = () => {
   const [files, setFiles] = useState({
     cv_of_staff_1: null,
     cv_of_staff_2: null,
+    cv_of_staff_3: null,
     business_registration_document: null,
     article_of_incorporation: null,
     tax_clearance: null,
     sanitation_waste_plan: null,
     letter_of_application: null,
-    b_certificate_payment_receipt: null,
   });
 
   const [loading, setLoading] = useState(false);
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -70,6 +73,16 @@ const ApplyBusinessCertificate = () => {
   };
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+  const paymentStatus = searchParams.get('payment');
+  const paymentRef = searchParams.get('ref');
+
+  if (paymentStatus === 'success' && paymentRef) {
+    setPaymentCompleted(true);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,7 +97,7 @@ const ApplyBusinessCertificate = () => {
     });
 
     try {
-      await axios.post('https://certificate-cms-backend.onrender.com/api/business-certificate-applications/', data, {
+      await axios.post('http://localhost:8000/api/business-certificate-applications/', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate("/business-certificate-success");
@@ -114,7 +127,7 @@ const ApplyBusinessCertificate = () => {
   };
 
   const noticeContainerStyle = {
-    backgroundColor: '#a8ddedff',
+    backgroundColor: '#2980b9',
     border: '1px solid #f0c36d',
     borderRadius: '10px',
     padding: '20px',
@@ -124,14 +137,14 @@ const ApplyBusinessCertificate = () => {
   const noticeTitleStyle = {
     fontSize: '18px',
     fontWeight: '600',
-    color: '#e77605ff',
+    color: '#d3d3d3',
     marginBottom: '10px',
   };
 
   const noticeTextStyle = {
     fontSize: '15px',
     lineHeight: '1.6',
-    color: '#333',
+    color: '#ffffff',
   };
 
   const requiredNoteStyle = {
@@ -196,7 +209,7 @@ const ApplyBusinessCertificate = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#000080", minHeight: "100vh", padding: "20px" }}>
+    <div style={{ backgroundColor: "#2980b9", minHeight: "100vh", padding: "20px" }}>
 
       <div style={containerStyle}>
         {/* Logo Row */}
@@ -215,7 +228,7 @@ const ApplyBusinessCertificate = () => {
           {/* Titles in the middle */}
           <div style={{ textAlign: 'center' }}>
             <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
-              WASH Business Certificate Application
+              National Water, Sanitation & Hygiene Commission
             </h2>
 
           </div>
@@ -226,8 +239,9 @@ const ApplyBusinessCertificate = () => {
             style={{ height: '80px' }}
           />
         </div>
-        <h3 style={{ textAlign: 'center' }}>Pre-Qualification Form</h3>
-
+        <h3 style={{ textAlign: 'center' }}>
+          Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH BUSINESS CERTIFICATE</span>
+        </h3>
         {loading && (
           <div style={{
             position: 'fixed',
@@ -253,7 +267,7 @@ const ApplyBusinessCertificate = () => {
             For any other information regarding the application process, contact the <strong>NWASHC Compliance Department</strong> via phone, email, or in-person.
           </p>
           <p style={requiredNoteStyle}>
-            <em style={{ color: 'red' }}>
+            <em style={{ color: 'black' }}>
               All fields with asterisks (*) are required fields. Your form won't submit if they're not properly answered.
             </em>
           </p>
@@ -357,10 +371,10 @@ const ApplyBusinessCertificate = () => {
                 )}
               </div>
             </div>
-            <input name="name_of_staff_3" placeholder="Name of Staff 3" value={formData.name_of_staff_2} onChange={handleChange} style={inputStyle} />
-            <input name="nationality_of_staff_3" placeholder="Nationality of Staff 3" value={formData.nationality_of_staff_2} onChange={handleChange} style={inputStyle} />
-            <input name="position_of_staff_3" placeholder="Position of Staff 3" value={formData.position_of_staff_2} onChange={handleChange} style={inputStyle} />
-            <textarea name="education_experience_of_staff_3" placeholder="Education/Experience of Staff 3" value={formData.education_experience_of_staff_2} onChange={handleChange} style={inputStyle} />
+            <input name="name_of_staff_3" placeholder="Name of Staff 3" value={formData.name_of_staff_3} onChange={handleChange} style={inputStyle} />
+            <input name="nationality_of_staff_3" placeholder="Nationality of Staff 3" value={formData.nationality_of_staff_3} onChange={handleChange} style={inputStyle} />
+            <input name="position_of_staff_3" placeholder="Position of Staff 3" value={formData.position_of_staff_3} onChange={handleChange} style={inputStyle} />
+            <textarea name="education_experience_of_staff_3" placeholder="Education/Experience of Staff 3" value={formData.education_experience_of_staff_3} onChange={handleChange} style={inputStyle} />
             <div style={{ marginBottom: "15px" }}>
               <label style={labelStyle}>Upload CV for Staff 3</label>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -399,7 +413,6 @@ const ApplyBusinessCertificate = () => {
               { label: "Article of Incorporation", name: "article_of_incorporation", required: false },
               { label: "Tax Clearance*", name: "tax_clearance", required: true },
               { label: "Sanitation and Waste Management Plan/Policy", name: "sanitation_waste_plan", required: false },
-              { label: "Certificate Payment Receipt*", name: "b_certificate_payment_receipt", required: true },
             ].map(({ label, name, required }) => (
               <div key={name} style={{ marginBottom: "15px" }}>
                 <label style={labelStyle}>{label}</label>
@@ -431,6 +444,61 @@ const ApplyBusinessCertificate = () => {
               </div>
             ))}
           </fieldset>
+
+          <fieldset style={sectionStyle}>
+  <legend style={legendStyle}>Certificate Acquisition Payment Information</legend>
+
+  <div
+    style={{
+      backgroundColor: '#f8f9fa',
+      border: '1px solid #ddd',
+      borderRadius: '8px',
+      padding: '20px',
+    }}
+  >
+    <p style={{ fontSize: '15px', lineHeight: '1.6', color: '#2c3e50' }}>
+      <strong>Important:</strong> Payment of the WASH Certificate acquisition fee is <strong>mandatory</strong> before submitting this
+      application.
+      <br /><br />
+      Clicking the <strong>Pay Now</strong> button below will redirect you to a
+      secure payment page. After successful payment, you will be returned to
+      this form to complete your submission.
+    </p>
+
+    {!paymentCompleted ? (
+      <button
+        type="button"
+        onClick={() => navigate('/certificate-payment')}
+        style={{
+          padding: '12px 14px',
+          backgroundColor: '#27ae60',
+          color: '#fff',
+          fontSize: '14px',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          marginTop: '15px',
+        }}
+      >
+        Pay Now
+      </button>
+    ) : (
+      <div
+        style={{
+          marginTop: '15px',
+          padding: '12px',
+          backgroundColor: '#d4edda',
+          color: '#155724',
+          borderRadius: '6px',
+          fontWeight: '500',
+        }}
+      >
+        ✔ Payment completed successfully. You may now submit your application.
+      </div>
+    )}
+  </div>
+</fieldset>
+
           <div style={{ marginTop: '10px' }}>
             <label style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <input type="checkbox" name="attestation" checked={formData.attestation} onChange={handleChange} required />
@@ -438,8 +506,16 @@ const ApplyBusinessCertificate = () => {
             </label>
           </div>
 
-          <button type="submit" style={submitButtonStyle} disabled={loading}>
-            {loading ? "Submitting..." : "Submit Application"}
+          <button
+            type="submit"
+            style={{
+             ...submitButtonStyle,
+             backgroundColor: paymentCompleted ? '#2980b9' : '#bdc3c7',
+             cursor: paymentCompleted ? 'pointer' : 'not-allowed',
+            }}
+            disabled={loading || !paymentCompleted}
+          >
+           {loading ? "Submitting..." : "Submit Application"}
           </button>
 
         </form>

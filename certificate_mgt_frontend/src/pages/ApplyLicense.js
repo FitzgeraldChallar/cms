@@ -141,7 +141,7 @@ const ApplyLicense = () => {
     }
   
     try {
-      await axios.post("https://certificate-cms-backend.onrender.com/api/license-applications/", completeData); 
+      await axios.post("http://localhost:8000/api/license-applications/", completeData); 
       setSuccess(true);
       navigate("/application-success");
     } catch (err) {
@@ -171,7 +171,7 @@ const ApplyLicense = () => {
   };
 
   const noticeContainerStyle = {
-  backgroundColor: '#a8ddedff',
+  backgroundColor: '#2980b9',
   border: '1px solid #f0c36d',
   borderRadius: '10px',
   padding: '20px',
@@ -181,14 +181,14 @@ const ApplyLicense = () => {
 const noticeTitleStyle = {
   fontSize: '18px',
   fontWeight: '600',
-  color: '#b85c00',
+  color: '#D3D3D3',
   marginBottom: '10px',
 };
 
 const noticeTextStyle = {
   fontSize: '15px',
   lineHeight: '1.6',
-  color: '#333',
+  color: '#ffffff',
 };
 
 const requiredNoteStyle = {
@@ -227,7 +227,7 @@ const requiredNoteStyle = {
   };
 
   return (
-   <div style={{ backgroundColor: "#000080", minHeight: "100vh", padding: "20px" }}>
+   <div style={{ backgroundColor: "#2980b9", minHeight: "100vh", padding: "20px" }}>
 
      <div style={containerStyle}>
       {/* Logo Row */}
@@ -246,7 +246,7 @@ const requiredNoteStyle = {
         {/* Titles in the middle */}
         <div style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
-            WASH Compliance License Application
+            National Water, Sanitation & Hygiene Commission
           </h2>
           
         </div>
@@ -257,7 +257,9 @@ const requiredNoteStyle = {
           style={{ height: '80px' }}
         />
       </div>
-      <h3 style={{textAlign: 'center'}}>Pre-Qualification Form</h3>
+      <h3 style={{ textAlign: 'center' }}>
+        Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH COMPLIANCE LICENSE</span>
+      </h3>
       {loading && (
        <div style={{
         position: 'fixed',
@@ -284,7 +286,7 @@ const requiredNoteStyle = {
     For any other information regarding the application process, contact the <strong>NWASHC Compliance Department</strong> via phone, email, or in-person.
   </p>
   <p style={requiredNoteStyle}>
-    <em style={{ color: 'red' }}>
+    <em style={{ color: 'black' }}>
       All fields with asterisks (*) are required fields. Your form won't submit if they're not properly answered.
     </em>
   </p>
@@ -717,7 +719,7 @@ const requiredNoteStyle = {
           type="submit"
           style={{
             padding: "12px 20px",
-            backgroundColor: "#000080",
+            backgroundColor: "#2980b9",
             color: "#fff",
             border: "none",
             borderRadius: "6px",

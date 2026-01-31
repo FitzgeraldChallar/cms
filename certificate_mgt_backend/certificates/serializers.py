@@ -30,7 +30,7 @@ class LicenseApplicationSerializer(serializers.ModelSerializer):
     application_date = serializers.SerializerMethodField()
 
     def get_application_date(self, obj):
-        return obj.application_date.date() if obj.application_date else None
+        return obj.application_date if obj.application_date else None
     
     class Meta:
         model = LicenseApplication

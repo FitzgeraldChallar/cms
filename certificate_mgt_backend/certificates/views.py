@@ -6,9 +6,8 @@ from .models import ClearanceApplication
 from .serializers import ClearanceApplicationSerializer
 from .models import BusinessCertificateApplication
 from .serializers import BusinessCertificateApplicationSerializer
-from rest_framework.exceptions import ValidationError
-
-
+from rest_framework.permissions import AllowAny
+from rest_framework.authentication import BasicAuthentication
 
 from .models import Partner, Certificate, CertificateApplication, LicenseApplication
 from .serializers import (
@@ -52,6 +51,8 @@ class CertificateApplicationViewSet(viewsets.ModelViewSet):
     queryset = CertificateApplication.objects.all()
     serializer_class = CertificateApplicationSerializer
     parser_classes = (MultiPartParser, FormParser)
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -97,6 +98,8 @@ class LicenseApplicationViewSet(viewsets.ModelViewSet):
     queryset = LicenseApplication.objects.all()
     serializer_class = LicenseApplicationSerializer
     parser_classes = (MultiPartParser, FormParser)
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -114,6 +117,8 @@ class ClearanceApplicationViewSet(viewsets.ModelViewSet):
     queryset = ClearanceApplication.objects.all().order_by('-submitted_at')
     serializer_class = ClearanceApplicationSerializer
     parser_classes = [MultiPartParser, FormParser]
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -127,6 +132,9 @@ class ClearanceApplicationViewSet(viewsets.ModelViewSet):
 class BusinessCertificateApplicationViewSet(viewsets.ModelViewSet):
     queryset = BusinessCertificateApplication.objects.all()
     serializer_class = BusinessCertificateApplicationSerializer
+
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
 
     
 

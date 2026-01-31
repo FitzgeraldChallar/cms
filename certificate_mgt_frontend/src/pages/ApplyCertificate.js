@@ -76,7 +76,7 @@ const ApplyCertificate = () => {
   };
 
   const noticeContainerStyle = {
-    backgroundColor: '#a8ddedff',
+    backgroundColor: '#2980b9',
     border: '1px solid #f0c36d',
     borderRadius: '10px',
     padding: '20px',
@@ -86,14 +86,14 @@ const ApplyCertificate = () => {
   const noticeTitleStyle = {
     fontSize: '18px',
     fontWeight: '600',
-    color: '#b85c00',
+    color: '#d3d3d3',
     marginBottom: '10px',
   };
 
   const noticeTextStyle = {
     fontSize: '15px',
     lineHeight: '1.6',
-    color: '#333',
+    color: '#ffffff',
   };
 
   const requiredNoteStyle = {
@@ -143,7 +143,7 @@ const ApplyCertificate = () => {
 
   const submitButtonStyle = {
     padding: '14px',
-    backgroundColor: '#000080',
+    backgroundColor: '#2980b9',
     color: '#fff',
     fontSize: '16px',
     border: 'none',
@@ -190,7 +190,7 @@ const ApplyCertificate = () => {
     });
 
     try {
-      await axios.post('https://certificate-cms-backend.onrender.com/api/applications/', data, {
+      await axios.post('http://localhost:8000/api/applications/', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       navigate('/application-confirmation');
@@ -202,7 +202,7 @@ const ApplyCertificate = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#000080", minHeight: "100vh", padding: "20px" }}>
+    <div style={{ backgroundColor: "#2980b9", minHeight: "100vh", padding: "20px" }}>
 
       <div style={containerStyle}>
         {/* Logo Row */}
@@ -221,7 +221,7 @@ const ApplyCertificate = () => {
           {/* Titles in the middle */}
           <div style={{ textAlign: 'center' }}>
             <h2 style={{ fontSize: '24px', color: '#2c3e50', margin: 0 }}>
-              WASH-in-School Certificate Application
+              National Water, Sanitation & Hygiene Commission
             </h2>
 
           </div>
@@ -232,7 +232,9 @@ const ApplyCertificate = () => {
             style={{ height: '80px' }}
           />
         </div>
-        <h3 style={{ textAlign: 'center' }}>Pre-Qualification Form</h3>
+        <h3 style={{ textAlign: 'center' }}>
+          Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH-IN-SCHOOL CERTIFICATE</span>
+        </h3>
         {loading && (
           <div style={{
             position: 'fixed',
@@ -259,7 +261,7 @@ const ApplyCertificate = () => {
             For any other information regarding the application process, contact the <strong>NWASHC Compliance Department</strong> via phone, email, or in-person.
           </p>
           <p style={requiredNoteStyle}>
-            <em style={{ color: 'red' }}>
+            <em style={{ color: 'black' }}>
               All fields with asterisks (*) are required fields. Your form won't submit if they're not properly answered.
             </em>
           </p>
