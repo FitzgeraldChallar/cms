@@ -44,7 +44,7 @@ const ApplyBusinessCertificate = () => {
 
   const [loading, setLoading] = useState(false);
   const [paymentCompleted, setPaymentCompleted] = useState(false);
-
+  const [paymentReference, setPaymentReference] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -84,6 +84,33 @@ const ApplyBusinessCertificate = () => {
     }
   }, [searchParams]);
 
+  const handleInitPayment = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/api/payments/initialize/",
+      {
+        service_type_code: "BUS_001",
+        application_model: "BusinessCertificateApplication",
+        application_id: 0, // explained below
+      }
+    );
+
+    const { reference, amount } = response.data;
+
+    setPaymentReference(reference);
+
+    // redirect to payment page with details
+    navigate(
+      `/certificate-payment?ref=${reference}&amount=${amount}`
+    );
+
+  } catch (error) {
+    console.error("Payment initialization failed", error);
+    alert("Unable to initialize payment. Please try again.");
+  }
+};
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -95,6 +122,10 @@ const ApplyBusinessCertificate = () => {
     Object.entries(files).forEach(([key, file]) => {
       if (file) data.append(key, file);
     });
+
+    if (paymentReference) {
+       data.append("payment_reference", paymentReference);
+    }
 
     try {
       await axios.post('http://localhost:8000/api/business-certificate-applications/', data, {
@@ -207,6 +238,7 @@ const ApplyBusinessCertificate = () => {
     cursor: 'pointer',
     marginTop: '20px',
   };
+  
 
   return (
     <div style={{ backgroundColor: "#2980b9", minHeight: "100vh", padding: "20px" }}>
@@ -468,10 +500,10 @@ const ApplyBusinessCertificate = () => {
     {!paymentCompleted ? (
       <button
         type="button"
-        onClick={() => navigate('/certificate-payment')}
+        onClick={handleInitPayment}
         style={{
           padding: '12px 14px',
-          backgroundColor: '#27ae60',
+          backgroundColor: '#0000FF',
           color: '#fff',
           fontSize: '14px',
           border: 'none',
@@ -499,10 +531,10 @@ const ApplyBusinessCertificate = () => {
   </div>
 </fieldset>
 
-          <div style={{ marginTop: '10px' }}>
+          <div style={{ marginTop: '10px' }}> 
             <label style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <input type="checkbox" name="attestation" checked={formData.attestation} onChange={handleChange} required />
-              I attest that the information provided is true and complete.*
+              I attest that the information provided is true and complete.* 
             </label>
           </div>
 
