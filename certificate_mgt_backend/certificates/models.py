@@ -8,6 +8,16 @@ from datetime import timedelta
 from django.db.models.signals import post_save
 from django.apps import apps
 from django.contrib.auth.models import User
+import uuid
+
+
+class ServiceType(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=255)
+    fee = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"
 
 
 class Partner(models.Model):
@@ -17,7 +27,7 @@ class Partner(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     address = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True) 
 
     def __str__(self):
         return self.organization_name
@@ -45,6 +55,13 @@ def default_expiry_date():
     return timezone.now().date() + timedelta(days=365)
 
 class CertificateApplication(models.Model):
+    service_type = models.ForeignKey(
+        ServiceType,
+        on_delete=models.PROTECT,
+        related_name="wash_applications",
+        null=True,
+        blank=True,
+    )
     STATUS_CHOICES = (
         ('Pending', 'Pending'),
         ('Approved', 'Approved'),
@@ -256,6 +273,15 @@ class CertificateApplication(models.Model):
     
 
 class LicenseApplication(models.Model):
+
+    service_type = models.ForeignKey(
+        ServiceType,
+        on_delete=models.PROTECT,
+        related_name="license_applications",
+        null=True,
+        blank=True, 
+    )
+
     partner = models.CharField(max_length=255)
     address = models.TextField()
     contact = models.CharField(max_length=50)
@@ -365,6 +391,15 @@ class LicenseApplication(models.Model):
 
 
 class ClearanceApplication(models.Model):
+
+    service_type = models.ForeignKey(
+        ServiceType,
+        on_delete=models.PROTECT,
+        related_name="clearance_applications",
+        null=True, 
+        blank=True,
+    )
+
     # General Information
     partner = models.CharField(max_length=255)
     head_office_address = models.TextField()
@@ -470,7 +505,13 @@ class ClearanceApplication(models.Model):
         return "Uncategorized"
     
 class BusinessCertificateApplication(models.Model):
-    # GENERAL INFORMATION SECTION
+    service_type = models.ForeignKey(
+        ServiceType,
+        on_delete=models.PROTECT,
+        related_name="business_certificate_applications",
+        null=True,
+        blank=True,
+    )
     BUSINESS_TYPE_CHOICES = [
         ('Water Processing Company', 'Water Processing Company'),
         ('Eatery/Restaurant', 'Eatery/Restaurant'),
@@ -553,7 +594,7 @@ class BusinessCertificateApplication(models.Model):
     def __str__(self):
         return f"Business Certificate - {self.partner}"
     
-    
+
 
 
 

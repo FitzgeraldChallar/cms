@@ -3,7 +3,7 @@ from django import forms
 from .forms import CertificateApplicationForm
 from .models import Partner, Certificate, CertificateApplication, LicenseApplication
 from django.utils import timezone
-from .models import ClearanceApplication
+from .models import ClearanceApplication, ServiceType
 from .models import BusinessCertificateApplication
 from django.utils.html import format_html
 from .certificate_generator import generate_certificate
@@ -16,6 +16,12 @@ admin.site.site_url = 'https://certificate-cms-frontend.onrender.com/'
 admin.site.site_header = "NWASHC CMS Administration"
 admin.site.site_title = "NWASHC CMS Admin Interfaces"
 admin.site.index_title = "Welcome to NWASHC Certificate Management System"
+
+# Register ServiceType so it shows in admin
+@admin.register(ServiceType)
+class ServiceTypeAdmin(admin.ModelAdmin):
+    list_display = ('code', 'name', 'fee')
+    search_fields = ('code', 'name')
 
 
 @admin.register(Partner)
@@ -194,7 +200,7 @@ class CertificateApplicationAdmin(admin.ModelAdmin):
 
     def get_fields(self, request, obj=None): 
         base_fields = [
-            'partner', 'address','tin_number', 'last_certificate_expiry_date', 'application_date',
+            'service_type', 'partner', 'address','tin_number', 'last_certificate_expiry_date', 'application_date',
              'principal_name', 'contact_number', 'email_address',
             'faith_based_school', 'non_faith_based_school',
             'type_of_business_registration', 'ownership', 'financial_strength', 'name_of_banks',
@@ -287,9 +293,9 @@ class ClearanceApplicationAdmin(admin.ModelAdmin):
     fieldsets = (
         ('General Information', {
             'fields': (
-                'partner', 'head_office_address', 'sub_office_addresses',
+                'service_type', 'partner', 'head_office_address', 'sub_office_addresses',
                 'executive_director_name',
-                'telephone_number', 'email',
+                'telephone_number', 'email','amount_paid',
             )
         }),
         ('WATSAN Construction Experiences', {
@@ -379,7 +385,7 @@ class BusinessCertificateApplicationAdmin(admin.ModelAdmin):
     readonly_fields = ('submitted_at',)
     search_fields = ('partner', 'type_of_business', 'name_of_business_owner')
     list_filter = ('type_of_business',)
-    fields = ['partner', 'address', 'contact_number','email','type_of_business','other_business_type','name_of_business_owner','address_of_business_owner','contact_no_of_business_owner','email_of_business_owner','name_of_staff_1','nationality_of_staff_1','position_of_staff_1',
+    fields = ['service_type', 'partner', 'address', 'contact_number','email','type_of_business','other_business_type','name_of_business_owner','address_of_business_owner','contact_no_of_business_owner','email_of_business_owner','name_of_staff_1','nationality_of_staff_1','position_of_staff_1',
               'education_experience_of_staff_1','cv_of_staff_1','name_of_staff_2','nationality_of_staff_2',
                'position_of_staff_2','education_experience_of_staff_2','cv_of_staff_2', 'name_of_staff_3','nationality_of_staff_3',
                'position_of_staff_3','education_experience_of_staff_3','cv_of_staff_3',
