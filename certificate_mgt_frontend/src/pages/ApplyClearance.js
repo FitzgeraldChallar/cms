@@ -163,12 +163,6 @@ const ApplyClearance = () => {
     marginTop: '15px',
   };
 
-
-  const headingStyle = {
-    textAlign: 'center',
-    marginBottom: '20px',
-  };
-
   const fieldsetStyle = {
     marginBottom: '25px',
     padding: '15px',
@@ -305,7 +299,7 @@ const ApplyClearance = () => {
           />
         </div>
         <h3 style={{ textAlign: 'center' }}>
-          Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH CLEARANCE</span>
+          Pre-Qualification Form |<span style={{ color: 'red', fontWeight: 'bold' }}> WASH CLEARANCE</span>
         </h3>
 
         {loading && (

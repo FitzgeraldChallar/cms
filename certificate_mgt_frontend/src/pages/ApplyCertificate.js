@@ -233,7 +233,7 @@ const ApplyCertificate = () => {
           />
         </div>
         <h3 style={{ textAlign: 'center' }}>
-          Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH-IN-SCHOOL CERTIFICATE</span>
+          Pre-Qualification Form |<span style={{ color: 'red', fontWeight: 'bold' }}> WASH-IN-SCHOOL CERTIFICATE</span>
         </h3>
         {loading && (
           <div style={{

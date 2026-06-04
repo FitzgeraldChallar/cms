@@ -183,14 +183,6 @@ const ApplyBusinessCertificate = () => {
     marginTop: '15px',
   };
 
-
-  const formTitleStyle = {
-    textAlign: 'center',
-    marginBottom: '30px',
-    fontSize: '24px',
-    color: '#2c3e50',
-  };
-
   const sectionStyle = {
     marginBottom: '25px',
     border: '1px solid #ddd',
@@ -272,7 +264,7 @@ const ApplyBusinessCertificate = () => {
           />
         </div>
         <h3 style={{ textAlign: 'center' }}>
-          Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH BUSINESS CERTIFICATE</span>
+          Pre-Qualification Form |<span style={{ color: 'red', fontWeight: 'bold' }}> WASH BUSINESS CERTIFICATE</span>
         </h3>
         {loading && (
           <div style={{

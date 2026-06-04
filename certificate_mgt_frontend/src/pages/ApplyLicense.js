@@ -258,7 +258,7 @@ const requiredNoteStyle = {
         />
       </div>
       <h3 style={{ textAlign: 'center' }}>
-        Pre-Qualification Form For <span style={{ color: 'red', fontWeight: 'bold' }}>WASH COMPLIANCE LICENSE</span>
+        Pre-Qualification Form |<span style={{ color: 'red', fontWeight: 'bold' }}> WASH COMPLIANCE LICENSE</span>
       </h3>
       {loading && (
        <div style={{
